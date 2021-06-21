@@ -3,12 +3,12 @@ import {
 	Card,
 	Row,
 	Col,
-	Button,
 	InputGroup,
 	FormControl,
 } from "react-bootstrap";
 import Swal from "sweetalert2";
-import './style.css'
+import { Close, Email, Person, PermIdentity, Lock } from "@material-ui/icons";
+import { Button } from '@material-ui/core';
 
 export default function Register() {
 	const [firstName, setFirstName] = useState("");
@@ -81,7 +81,8 @@ export default function Register() {
 										setFirstName(e.target.value);
 									}}
 								/>
-								<InputGroup.Text>First Name</InputGroup.Text>
+								<InputGroup.Text><Person color='primary'/></InputGroup.Text>
+								
 							</InputGroup>
 							<InputGroup className="mb-3">
 								<FormControl
@@ -92,7 +93,7 @@ export default function Register() {
 										setLastName(e.target.value);
 									}}
 								/>
-								<InputGroup.Text>Last Name</InputGroup.Text>
+								<InputGroup.Text><PermIdentity color='primary'/></InputGroup.Text>
 							</InputGroup>
 							<InputGroup className="mb-3">
 								<FormControl
@@ -104,7 +105,7 @@ export default function Register() {
 										setEmail(e.target.value);
 									}}
 								/>
-								<InputGroup.Text>Email Address</InputGroup.Text>
+								<InputGroup.Text><Email color='primary'/></InputGroup.Text>
 							</InputGroup>
 							<InputGroup className="mb-3">
 								<FormControl
@@ -115,7 +116,7 @@ export default function Register() {
 										setPassword(e.target.value);
 									}}
 								/>
-								<InputGroup.Text>Password</InputGroup.Text>
+								<InputGroup.Text><Lock color='primary'/></InputGroup.Text>
 							</InputGroup>
 							<InputGroup className="mb-3">
 								<FormControl
@@ -127,18 +128,25 @@ export default function Register() {
 									}}
 								/>
 								<InputGroup.Text>
-									Confirm Password
+									<Lock color='primary'/>
 								</InputGroup.Text>
 							</InputGroup>
 							{isActive ? (
-								<Button variant="primary" type="submit" className='w-100'>
+								<Button 
+								variant="contained" 
+								type="submit" 
+								className='w-100'
+								color='primary'>
 									Submit
+								
 								</Button>
+								
 							) : (
 								<Button
-									variant="primary"
+									variant="contained"
 									type="submit"
 									className='w-100'
+									color='primary'
 									disabled
 								>Register
 								</Button>
