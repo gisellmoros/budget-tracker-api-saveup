@@ -7,7 +7,7 @@ import {
 	FormControl,
 } from "react-bootstrap";
 import Swal from "sweetalert2";
-import { Close, Email, Person, PermIdentity, Lock } from "@material-ui/icons";
+import { Email, Person, PermIdentity, Lock } from "@material-ui/icons";
 import { Button } from '@material-ui/core';
 
 export default function Register() {
@@ -135,8 +135,8 @@ export default function Register() {
 								<Button 
 								variant="contained" 
 								type="submit" 
-								className='w-100'
-								color='primary'>
+								className="w-100"
+								color="primary">
 									Submit
 								
 								</Button>
@@ -145,8 +145,8 @@ export default function Register() {
 								<Button
 									variant="contained"
 									type="submit"
-									className='w-100'
-									color='primary'
+									className="w-100"
+									color="primary"
 									disabled
 								>Register
 								</Button>
