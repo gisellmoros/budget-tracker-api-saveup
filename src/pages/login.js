@@ -3,7 +3,9 @@ import UserContext from 'userContext'
 import { InputGroup, Button, Row, Col, Card, FormControl } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { Email, Lock } from "@material-ui/icons";
+import { Button as LoginBtn } from '@material-ui/core';
 import './style.css'
+
 
 export default function Login() {
 	const { user, setUser } = useContext(UserContext);
@@ -104,20 +106,22 @@ return(
 								<InputGroup.Text><Lock color='primary'/></InputGroup.Text>
 							</InputGroup>
 					{isActive ? (
-						<Button 
-						variant="primary" 
-						type="submit" 
-						className="w-100">
-							Login
-						</Button>
-					) : (
-						<Button 
-						variant="primary" 
+						<LoginBtn 
+						variant="contained" 
 						type="submit" 
 						className="w-100"
+						color="primary">
+							Login
+						</LoginBtn>
+					) : (
+						<LoginBtn 
+						variant="contained" 
+						type="submit" 
+						className="w-100"
+						color="primary"
 						disabled>
 							Login
-						</Button>
+						</LoginBtn>
 					)}
 				</form>
 			</Card.Body>
