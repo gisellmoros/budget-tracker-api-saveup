@@ -66,7 +66,8 @@ fetch('http://localhost:4000/api/users/', {
 		} else {
 			Swal.fire({
 				icon: "error",
-				title: "Login Failed."
+				title: "Login Failed.",
+				text: "You are already logged in."
 			})
 		}
 	})

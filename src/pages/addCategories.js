@@ -1,5 +1,5 @@
 import React, {useState,useEffect,useContext} from 'react'
-import {Form,Button,Dropdown,Row,Col} from 'react-bootstrap'
+import {Form,Button,Dropdown,Row,Col, Card} from 'react-bootstrap'
 import Swal from 'sweetalert2'
 import UserContext from "userContext"
 import {Select, MenuItem} from '@material-ui/core'
@@ -50,11 +50,13 @@ export default function Categories () {
 	return(
 <Row className="mt-5">
 <Col xs={12} md={4} className="m-auto mt-5">
+<Card className="category-form">
+<Card.Body>
 
-			<h3 className="text-center">Create Category</h3>
+			<h3 className="text-center mt-3">Create Category</h3>
 			<Form onSubmit={e => addCategory(e)}>
 		<Form.Group>
-			<Form.Label>Category Name</Form.Label>
+			<Form.Label className="mt-3">Category Name</Form.Label>
 			<Form.Control 
 			type="text" 
 			placeholder="Enter Category Name" 
@@ -81,6 +83,8 @@ export default function Categories () {
 			<Button variant="primary" type="submit" disabled>Create Category</Button>
 		}
 	</Form>
+	</Card.Body>
+	</Card>
 	</Col>
 </Row>
 		)
