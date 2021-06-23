@@ -52,12 +52,22 @@ export default function Register() {
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
-				Swal.fire({
+				if(data.email) {
+					Swal.fire({
 					icon: "success",
 					title: "Registered Successfully.",
-					text: "Congratulations for registering!",
-				});
-			});
+					text: "Congratulations for registering!"
+				})
+				} else {
+					Swal.fire({
+					icon: "error",
+					title: "Email already registered.",
+					text: "Please used a unique email address."
+				})
+				}
+					
+				})
+	
 		setFirstName("");
 		setLastName("");
 		setEmail("");

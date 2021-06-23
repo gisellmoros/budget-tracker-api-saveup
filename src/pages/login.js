@@ -11,7 +11,7 @@ export default function Login() {
 	const { user, setUser } = useContext(UserContext);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [isActive, setIsActive] = useState(true);
+	const [isActive, setIsActive] = useState(false);
 
 	useEffect(() => {
 		if (email !== "" && password !== "") {
@@ -67,7 +67,7 @@ fetch('http://localhost:4000/api/users/', {
 			Swal.fire({
 				icon: "error",
 				title: "Login Failed.",
-				text: "You are already logged in."
+				text: "Account not yet registered."
 			})
 		}
 	})

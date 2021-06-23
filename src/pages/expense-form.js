@@ -8,6 +8,7 @@ import {
   InputGroup
 } from 'react-bootstrap'
 import './expense'
+import Swal from 'sweetalert2'
 
 
 export default function CreateExpenseEntry() {
