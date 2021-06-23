@@ -2,7 +2,7 @@ import {useState} from 'react'
 import Header from './components/Header'
 import Register from 'pages/register'
 import Login from 'pages/login'
-import Categories from 'pages/addCategories'
+import Categories from 'pages/categories'
 import Dashboard from 'pages/maindashboard'
 import 'App.css'
 import {UserProvider} from 'userContext'
@@ -10,7 +10,6 @@ import {Route,Switch} from 'react-router-dom'
 import {BrowserRouter as Router} from 'react-router-dom'
 import {Container} from 'react-bootstrap'
 import NavBar from 'components/AppNavBar'
-import {GlobalContextProvider} from './globalState'
 
 
 function App () {
@@ -21,7 +20,7 @@ function App () {
  })
 
 return(
-  <GlobalContextProvider>
+  
   <UserProvider value={{user,setUser}}>
     <Router>
       <NavBar/>
@@ -36,7 +35,6 @@ return(
         </Container>
   </Router>
 </UserProvider>
-</GlobalContextProvider>
   )
 
 }

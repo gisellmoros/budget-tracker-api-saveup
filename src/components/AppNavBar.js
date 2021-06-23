@@ -6,7 +6,6 @@ import UserContext from 'userContext'
 export default function NavBar() {
 
 	const {user} = (useContext(UserContext))
-	console.log(user)
 
 	return (
 

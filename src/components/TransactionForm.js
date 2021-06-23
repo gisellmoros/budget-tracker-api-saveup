@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {uniqueId} from '../utils'
 import '../pages/style.css'
+import {Container,Card} from 'react-bootstrap'
 
 export default function TransactionForm({onNewTransaction}) {
 	const [nameValue, setNameValue] = useState("")
@@ -17,9 +18,10 @@ export default function TransactionForm({onNewTransaction}) {
 	}
 
 	return (
-		<div>
+		<Container className="mt-3">
+		<Card>
 			<h4>Add New Transaction</h4>
-			<form>
+			<form className="transaction-form">
 				<label>
 				Name
 					<div>
@@ -43,7 +45,8 @@ export default function TransactionForm({onNewTransaction}) {
 					<button onClick={(e) => addTransaction("expense",e)}>Add Expense</button>
 				</div>
 			</form>
-		</div>
+			</Card>
+		</Container>
 
 		)
 }

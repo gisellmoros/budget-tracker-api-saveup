@@ -5,11 +5,10 @@ import UserContext from "userContext"
 import {Select, MenuItem} from '@material-ui/core'
 
 
-export default function Entry () {
+export default function Categories () {
 	const { user } = useContext(UserContext)
 	const [name,setName] = useState("")
 	const [type, setType] = useState("")
-	const [amount,setAmount] = useState(0)
 	const [isActive,setIsActive] = useState(true)
 	
 
@@ -21,7 +20,7 @@ export default function Entry () {
 	}
 },[name,type])
 
-	function addEntry (e) {
+	function addCategory (e) {
 		e.preventDefault ()
 		let token = localStorage.getItem('token')
 
@@ -38,26 +37,15 @@ export default function Entry () {
 		})
 		.then(res => res.json())
 		.then(data => {
-			if(data._id) {
-				console.log('Data from Line 38',data)
+				console.log(data)
 				Swal.fire({
 				icon: "success",
-				title: "Entry created successfully.",
-				text: "Entry List is now updated!"
+				title: "Category created successfully.",
+				text: "Category List is now updated!"
 				})
-			} else {
-				Swal.fire({
-
-					icon: 'error',
-					title: 'Course Creation Failed.',
-
-				})
-			}
-			
 		 })
 	setName("")
 	setType("")
-	setAmount("")
 	}
 
 	return(
@@ -66,11 +54,11 @@ export default function Entry () {
 <Card className="category-form">
 <Card.Body>
 
-			<h3 className="text-center mt-2">Add Entry</h3>
+			<h3 className="text-center mt-2">Add Category</h3>
 			
-			<Form onSubmit={e => addEntry(e)}>
+			<Form onSubmit={e => addCategory(e)}>
 		<Form.Group>
-			<Form.Label className="mt-3">Transaction Name</Form.Label>
+			<Form.Label className="mt-3">Category Name</Form.Label>
 			<Form.Control 
 			type="text" 
 			placeholder="Your transaction here" 
@@ -88,14 +76,6 @@ export default function Entry () {
 				<MenuItem value="Income">Income</MenuItem>
 				<MenuItem value="Expense">Expense</MenuItem>
 			</Select>
-		</Form.Group>
-		<Form.Group>
-			<Form.Label className="mt-3">Amount</Form.Label>
-			<Form.Control 
-			type="number" 
-			placeholder="0.00" 
-			value={amount}  
-			onChange={e=>{setAmount(e.target.value)}}required/>
 		</Form.Group>
 		{
 			user.email

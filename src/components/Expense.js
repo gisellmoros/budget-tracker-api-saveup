@@ -1,9 +1,12 @@
-import React from "react";
-import '../pages/style.css'
+import React from 'react';
+import {Container,Card} from 'react-bootstrap'
+
 
 export default function Expense({ income, expense }) {
 	return (
-		<div>
+		<Container>
+		<Card>
+		<Card.Body>
 			<h2>Your Balance</h2>
 			<div>Php{income - expense}</div>
 			<div>
@@ -16,6 +19,8 @@ export default function Expense({ income, expense }) {
 					<div>Php{expense}</div>
 				</div>
 			</div>
-		</div>
+			</Card.Body>
+			</Card>
+		</Container>
 	);
 }

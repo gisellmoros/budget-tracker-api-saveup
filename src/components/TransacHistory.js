@@ -1,17 +1,28 @@
 import React from 'react'
 import '../pages/style.css'
+import {Container,Card} from 'react-bootstrap'
+import DeleteIcon from '@material-ui/icons/Delete';
 
 export default function TransacHistory({transactions,onDeleteTransaction}) {
 	return (
-		<div>
+		<Container>
+		<Card className="mt-3">
 		<h4>Transaction History</h4>
-		<ul> 
+		<ul className="transactions"> 
 		{
 			transactions.map((data)=> 
-				<li key={data.id}>{data.name} ${data.amount}<button onClick={() => onDeleteTransaction(data.id)}>Delete</button></li>)
+				<li key={data.id}>
+				<div>{data.name}</div>
+				<div>
+				<span>Php{data.amount}</span>
+				<button onClick={() => onDeleteTransaction(data.id)}><DeleteIcon/></button>
+				</div>
+				</li>
+				)
 		}
 		</ul>
-		</div>
+		</Card>
+		</Container>
 
 		)
 }
