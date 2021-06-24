@@ -108,21 +108,26 @@ export default function Balance() {
 		<>
 			<Container>
 				<Row>
-					<Col xs={12} md={6} lg={4} className="w-100 mt-5 mb-5" >
+					<Col xs={12} md={4} lg={6} className="w-100 mt-5 mb-5 ml-auto mr-auto" >
 					<Expense income={income} expense={expense} />
 					</Col>
-					<Col xs={12} md={6} lg={4} className="w-100 mt-5">
+				</Row>
+				<Row>
+					<Col xs={12} md={6} lg={4} className="w-100 mt-1">
 					<TransactionForm
 					onNewTransaction={newTransactionHandler}
 					setEntries={setEntries}
 					/>
 					</Col>
-				</Row>
+				<Col className="w-100 mt-1">
 				<TransacHistory
 					transactions={transactions}
 					onDeleteTransaction={deleteTransactionHandler}
 					entries={entries}
 				/>
+				</Col>
+				</Row>
+
 			</Container>
 		</>
 	);

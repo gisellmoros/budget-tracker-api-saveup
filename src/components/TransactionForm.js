@@ -11,6 +11,7 @@ export default function TransactionForm({ onNewTransaction }) {
 	const [amountValue, setAmountValue] = useState("");
 	const [categoryValue, setCategoryValue] = useState("");
 	const [categories, setCategories] = useState([]);
+	
 
 	const addTransaction = (type, e) => {
 		e.preventDefault();

@@ -8,17 +8,21 @@ export default function Expense({ income, expense }) {
 		<Card className="expense-card">
 		<Card.Body>
 			<h3 className="text-center">Your Balance</h3>
-			<div className='balance-val text-center'>Php {income - expense}</div>
-			<div>
-				<div className='col col-income'>
+			<Row className='balance-val text-center'>
+			<Col>
+				Php {(income - expense).toFixed(2)}
+			</Col>
+			</Row>
+			<Row>
+				<Col className='col col-income'>
 					<h4>Income</h4>
-					<div className='income-text'>Php {income}</div>
-				</div>
-				<div className='col col-expense'>
+					<div className='income-text'>Php {(income).toFixed(2)}</div>
+				</Col>
+				<Col className='col col-expense'>
 					<h4>Expense</h4>
-					<div className='expense-text'>Php {expense}</div>
-				</div>
-			</div>
+					<div className='expense-text'>Php {(expense).toFixed(2)}</div>
+				</Col>
+			</Row>
 			</Card.Body>
 			</Card>
 	
