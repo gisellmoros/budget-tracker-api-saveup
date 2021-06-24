@@ -1,10 +1,15 @@
-/*@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap');*/
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;;
 }
+
+/*:root {
+  background: #425F9C;
+  color: #3c4043;
+}*/
 
 .cardHighlight {
 
@@ -17,4 +22,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+:root {
+    --box-shadow: 0px 1px 4px 1px rgba(199,199,199,1);
+    --income: green;
+    --expense: red;
 }
