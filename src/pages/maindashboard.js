@@ -6,6 +6,7 @@ import { uniqueId } from "../utils";
 import { Container, Row, Col } from "react-bootstrap";
 import {Redirect} from 'react-router-dom'
 import UserContext from "userContext";
+import Swal from "sweetalert2"
 
 const transactionData = [
 	{
@@ -86,19 +87,38 @@ export default function Balance() {
 	const newTransactionHandler = (item) => {
 		let newTransactions = [...transactions, item];
 		setTransactions(newTransactions);
-		console.log("New transactions here", newTransactions);
+		//console.log("New transactions here", newTransactions);
 	};
 
 	const deleteTransactionHandler = (_id) => {
-		// console.log(_id)
-		const newTransactions = entries.filter((item) => item._id !== _id);
-		// console.log(newTransactions)
-		setTransactions(newTransactions);
+		fetch('http://localhost:4000/api/entries/' + (_id),{
+			method: 'DELETE',
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem("token")}`,
+			}
+		})
+		.then(res => res.json())
+		.then(data => {
+			console.log(data)
+			Swal.fire({
+					icon: "success",
+					title: "Your transaction has been deleted.",
+				});
+		})
+		fetch("http://localhost:4000/api/entries", {
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem("token")}`,
+			},
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				setEntries(data);
+			});
 	};
-
 	// useEffect(() => {
-	// 	expenseCalculation()
-	// },[transactions]);
+	// 	deleteTransactionHandler()
+	// },[])
 
 	return (
 		!user.email

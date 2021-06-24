@@ -6,7 +6,7 @@ import { Select, MenuItem } from "@material-ui/core";
 import TransacHistory from "./TransacHistory";
 import Swal from "sweetalert2";
 
-export default function TransactionForm({ onNewTransaction }) {
+export default function TransactionForm({ onNewTransaction, setEntries }) {
 	const [nameValue, setNameValue] = useState("");
 	const [amountValue, setAmountValue] = useState("");
 	const [categoryValue, setCategoryValue] = useState("");
@@ -44,7 +44,16 @@ export default function TransactionForm({ onNewTransaction }) {
 				});
 			});
 		//onNewTransaction(data)
-
+		fetch("http://localhost:4000/api/entries", {
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem("token")}`,
+			},
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				setEntries(data);
+			});
 		// console.log(data)
 		setNameValue("");
 		setAmountValue("");
@@ -59,7 +68,7 @@ export default function TransactionForm({ onNewTransaction }) {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
+				//console.log(data);
 				setCategories(data);
 			});
 	}, []);
