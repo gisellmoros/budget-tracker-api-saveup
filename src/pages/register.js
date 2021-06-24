@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
 	Card,
 	Row,
@@ -9,8 +9,11 @@ import {
 import Swal from "sweetalert2";
 import { Email, Person, PermIdentity, Lock } from "@material-ui/icons";
 import { Button } from '@material-ui/core';
+import {Redirect} from 'react-router-dom'
+import UserContext from 'userContext'
 
 export default function Register() {
+	const {user} = useContext(UserContext)
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
 	const [email, setEmail] = useState("");
@@ -76,6 +79,10 @@ export default function Register() {
 	}
 
 	return (
+		user.email
+		?
+		<Redirect from='/register' to='/maindashboard'/>
+		:
 		<Row className="form mt-5">
 			<Col xs={12} md={4} className="form m-auto mt-5">
 				<Card>

@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { Email, Lock } from "@material-ui/icons";
 import { Button as LoginBtn } from '@material-ui/core';
 import './style.css'
+import {Redirect} from 'react-router-dom'
 
 
 export default function Login() {
@@ -12,6 +13,7 @@ export default function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [isActive, setIsActive] = useState(false);
+	const [willredirect,setWillRedirect] = useState(false)
 
 	useEffect(() => {
 		if (email !== "" && password !== "") {
@@ -56,7 +58,7 @@ fetch('http://localhost:4000/api/users/', {
 		//console.log(data)
 		localStorage.setItem('email',data.email)
 		localStorage.setItem('isAdmin',data.isAdmin)
-		//setWillRedirect(true)
+		setWillRedirect(true)
 
 		setUser({
 			email: data.email,
@@ -67,7 +69,7 @@ fetch('http://localhost:4000/api/users/', {
 			Swal.fire({
 				icon: "error",
 				title: "Login Failed.",
-				text: "Account not yet registered."
+				text: "Invalid credentials."
 			})
 		}
 	})
@@ -77,6 +79,10 @@ setPassword("")
 }
 
 return(
+	user.email
+	?
+	<Redirect from ='/login' to="/maindashboard"/>
+	:
 	<Row className="form mt-5">
 	<Col xs={12} md={4} className="m-auto mt-5">
 		<Card className="login-form">

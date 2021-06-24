@@ -3,6 +3,7 @@ import { Form, Button, Row, Col, Card } from "react-bootstrap";
 import Swal from "sweetalert2";
 import UserContext from "userContext";
 import { Select, MenuItem } from "@material-ui/core";
+import {Redirect} from 'react-router-dom'
 
 export default function Categories() {
 	const { user } = useContext(UserContext);
@@ -47,6 +48,10 @@ export default function Categories() {
 	}
 
 	return (
+		!user.email
+		?
+		<Redirect from ='/categories' to= '/login'/>
+		:
 		<Row className="mt-5">
 			<Col xs={12} md={4} className="m-auto mt-3">
 				<Card className="category-form">

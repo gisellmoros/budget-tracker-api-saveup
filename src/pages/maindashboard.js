@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Expense from "components/Expense";
 import TransacHistory from "components/TransacHistory";
 import TransactionForm from "components/TransactionForm";
 import { uniqueId } from "../utils";
 import { Container, Row, Col } from "react-bootstrap";
+import {Redirect} from 'react-router-dom'
+import UserContext from "userContext";
 
 const transactionData = [
 	{
@@ -45,6 +47,7 @@ export default function Balance() {
 	const [transactions, setTransactions] = useState([]);
 	const [entries, setEntries] = useState([]);
 	const [amount, setAmount] = useState(0);
+	const {user} = useContext(UserContext)
 
 	const expenseCalculation = () => {
 		let income = 0,
@@ -98,13 +101,17 @@ export default function Balance() {
 	// },[transactions]);
 
 	return (
+		!user.email
+		?
+		<Redirect from='/maindashboard' to='/login'/>
+		:
 		<>
 			<Container>
 				<Row>
-					<Col xs={12} md={6} className="w-100">
+					<Col xs={12} md={6} lg={4} className="w-100 mt-5 mb-5" >
 					<Expense income={income} expense={expense} />
 					</Col>
-					<Col xs={12} md={6}>
+					<Col xs={12} md={6} lg={4} className="w-100 mt-5">
 					<TransactionForm
 					onNewTransaction={newTransactionHandler}
 					setEntries={setEntries}

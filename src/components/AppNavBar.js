@@ -12,10 +12,12 @@ export default function NavBar() {
 		<Navbar bg="light" variant="light" expand="lg">
 			<Navbar.Toggle aria-controls="basic-navbar-nav"/>
 			<Navbar.Collapse id="basic-navbar-nav">
+						<Nav.Link as={NavLink} to="/">Home</Nav.Link>
 						<Nav.Link as={NavLink} to="/login">Login</Nav.Link>
 						<Nav.Link as={NavLink} to="/register">Register</Nav.Link>
 						<Nav.Link as={NavLink} to="/categories">Categories</Nav.Link>
 						<Nav.Link as={NavLink} to="/maindashboard">Dashboard</Nav.Link>
+						<Nav.Link as={NavLink} to="/logout">Logout</Nav.Link>
 			</Navbar.Collapse>
 
 		</Navbar>

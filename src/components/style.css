@@ -102,8 +102,18 @@
 
 .expense-btn {
     background-color: #C70039;
+
 }
 
 .expense-card {
     height: 100%;
+}
+
+.header {
+height: 400px;
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
